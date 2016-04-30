@@ -107,13 +107,13 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How can we represent the system in an **architecture diagram**, which gives information both about the Docker containers, the communication protocols and the commands? |
 | | *Insert your diagram here...* |
 |Question | Who is going to **send UDP datagrams** and **when**? |
-| | *Enter your response here...* |
+| | *The Musician and every second* |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
-| | *Enter your response here...* |
+| | *The Auditor and it will listen to the new musicians* |
 |Question | What **payload** should we put in the UDP datagrams? |
-| | *Enter your response here...* |
+| | *uuid, instrument, and activity* |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
-| | *Enter your response here...* |
+| | *a JSON data structure updated every second* |
 
 
 ## Task 2: implement a "musician" Node.js application
@@ -121,19 +121,19 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic
 | ---  | ---
 |Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**?
-| | *Enter your response here...*
+| | *JSON.stringify()*
 |Question | What is **npm**?
-| | *Enter your response here...*
+| | *it's a node.js package manager which provides multiple short libraries*
 |Question | What is the `npm install` command and what is the purpose of the `--save` flag?
-| | *Enter your response here...*
+| | *It's for installing a package (a library) needed for our Node.js app. --save is for having the package appearing in dependecies*
 |Question | How can we use the `https://www.npmjs.com/` web site?
-| | *Enter your response here...*
+| | *By entering a package name in the serach field and then watching an example to know how to use it*
 |Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122?
-| | *Enter your response here...*
+| | *npm install uuid; var uuid = require('uuid'); uuid.v4();*
 |Question | In Node.js, how can we execute a function on a **periodic** basis?
-| | *Enter your response here...*
+| | *By using cron package*
 |Question | In Node.js, how can we **emit UDP datagrams**?
-| | *Enter your response here...*
+| | *By using dgram module*
 |Question | In Node.js, how can we **access the command line arguments**?
 | | *Enter your response here...*
 
