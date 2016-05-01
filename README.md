@@ -109,7 +109,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | Who is going to **send UDP datagrams** and **when**? |
 | | *The Musician and every second* |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
-| | *The Auditor and it will listen to the new musicians* |
+| | *The Auditor and he's going to keep a track of active musicians. He will send * |
 |Question | What **payload** should we put in the UDP datagrams? |
 | | *uuid, instrument, and activity* |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
@@ -135,7 +135,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | In Node.js, how can we **emit UDP datagrams**?
 | | *By using dgram module*
 |Question | In Node.js, how can we **access the command line arguments**?
-| | *Enter your response here...*
+| | *With the keyword 'process'*
 
 
 ## Task 3: package the "musician" app in a Docker image
