@@ -147,11 +147,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?
 | | *Enter your response here...*
 |Question | After building our Docker image, how do we use it to **run containers**?
-| | *Enter your response here...*
+| | *with the command : docker run <name_of_image> <instrument>*
 |Question | How do we get the list of all **running containers**?
-| | *Enter your response here...*
+| | *docker ps*
 |Question | How do we **stop/kill** one running container?
-| | *Enter your response here...*
+| | *docker stop <running_container_name>*
 |Question | How can we check that our running containers are effectively sending UDP datagrams?
 | | *Enter your response here...*
 
