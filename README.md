@@ -161,11 +161,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic
 | ---  | ---
 |Question | With Node.js, how can we listen for UDP datagrams in a multicast group?
-| | *Enter your response here...*
+| | *We create a datagram socket with Node.js' udp4 module*
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**? 
-| | *Enter your response here...*
+| | *We simply add the instrument and sounds as key-values in the map. The key is the instrument, and the value is the sound. We get the key by specifying the value*
 |Question | How can we use the `Moment.js` npm module to help us with **date manipulations** and formatting? 
-| | *Enter your response here...*
+| | *Firstly we add it by typing npm install moment*
 |Question | When and how do we **get rid of inactive players**? 
 | | *Enter your response here...*
 |Question | How do I implement a **simple TCP server** in Node.js? 
