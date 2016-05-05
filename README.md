@@ -1,5 +1,19 @@
 # Teaching-HEIGVD-RES-2016-Labo-DockerMusic
 
+## Docker
+To run the images, first build them, then run a container from the builded images.
+
+### Build images
+To build the images locally, browse in appropriate folder and the type the following command
+* In image-musician/ folder type : `docker build -t res/musician .` (Don't forget the dot)
+* In image-auditor/ folder type : `docker build -t res/auditor .` (Don't forget the dot)
+
+### Run container
+To run the images, type the followinf commands
+* Run a musician : `docker run res/musician INSTRUMENT` (INSTRUMENT = piano | flute | violin | drum | trumpet)
+* Run an auditor : `docker run res/auditor`
+
+
 ## Admin
 
 * You can work in teams of two students.
