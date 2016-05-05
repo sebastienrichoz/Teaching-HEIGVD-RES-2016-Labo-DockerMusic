@@ -165,11 +165,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**? 
 | | *We simply add the instrument and sounds as key-values in the map. The key is the instrument, and the value is the sound. We get the key by specifying the value*
 |Question | How can we use the `Moment.js` npm module to help us with **date manipulations** and formatting? 
-| | *Firstly we add it by typing npm install moment*
+| | *Firstly we add it by typing npm install moment, then we declare var moment = require('moment') and finally we follow the string format to convert timestamp date format into the desired date format*
 |Question | When and how do we **get rid of inactive players**? 
-| | *Enter your response here...*
+| | *We get rid of them when they haven't been playing for the last 5 seconds.*
 |Question | How do I implement a **simple TCP server** in Node.js? 
-| | *Enter your response here...*
+| | *With the net module of Node.js*
 
 
 ## Task 5: package the "auditor" app in a Docker image
@@ -177,7 +177,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic
 | ---  | ---
 |Question | How do we validate that the whole system works, once we have built our Docker image?
-| | *Enter your response here...*
+| | *By executing the validate.sh script*
 
 
 ## Constraints
