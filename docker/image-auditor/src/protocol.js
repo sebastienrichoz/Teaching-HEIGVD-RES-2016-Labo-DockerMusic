@@ -1,5 +1,5 @@
 /*
- * Our application defines standard string for simulating sounds played by the instruments
+ * Our application defines standard string for retrieving instruments from sounds
  */
 var myMap = new Map([
 	["ti-ta-ti", "piano"],
