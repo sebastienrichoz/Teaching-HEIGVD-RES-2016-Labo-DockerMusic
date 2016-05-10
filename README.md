@@ -123,11 +123,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | Who is going to **send UDP datagrams** and **when**? |
 | | *The Musician and every second* |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
-| | *The Auditor and he's going to keep a track of active musicians. He will send * |
+| | *The Auditor and he's going to keep a track of active musicians.* |
 |Question | What **payload** should we put in the UDP datagrams? |
-| | *uuid, instrument, and activity* |
+| | *uuid, instrument, and timestamp to keep track of activity* |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
-| | *a JSON data structure updated every second* |
+| | *We need a Map for UDP sender with the instrument as key and sound played as value, and for the receiver, this same map but with the sound as key and intrument as value* |
 
 
 ## Task 2: implement a "musician" Node.js application
