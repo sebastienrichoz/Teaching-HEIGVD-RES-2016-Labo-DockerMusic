@@ -43,7 +43,8 @@ var dictionnary = new Map();
 /*
  * Let's define a javascript class for our musician.
  * @param sound is the sound played by the musician
- * @param timestamp is the time when he played that sound
+ * @param activeSince is the first time when he began to play
+ * @param lastTimePlayed is the last time when the musician played a sound
  */
 function Musician(sound, activeSince, lastTimePlayed) {
 	this.instrument = protocol.INSTRUMENT_MAP.get(sound);
@@ -79,7 +80,6 @@ function activeMusicians() {
 				activeSince: moment(value['activeSince']).format("YYYY-MM-DDThh:mm:ss.SSS")
 			}
 			musicians.push(data);
-			musicians.push("\\n");
 		}
 
 	});
@@ -89,13 +89,13 @@ function activeMusicians() {
 }
 
 /* 
- * Let's create a datagram socket. We will use it to listen for datagrams published in the
- * multicast group by musicians and containing sounds
+ * Let's create a datagram socket. We will use it to listen
+ * to datagrams published in the multicast group by musicians.
  */
 var s = dgram.createSocket('udp4');
 s.bind(protocol.PROTOCOL_PORT, function() {
-  console.log("Joining multicast group");
-  s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
+	console.log("Joining multicast group");
+	s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
 });
 
 /* 
@@ -108,7 +108,7 @@ s.on('message', function(msg, source) {
 	json = JSON.parse(msg);
 
 	// Add musician if he's not contained in our dictionnary
-	// or modify the last time he played if he's already contained
+	// or modify the last time he played if he's already in it.
 	if (!dictionnary.has(json['uuid'])) {
 		dictionnary.set(json['uuid'], new Musician(json['sound'], Date.now(), json['timestamp']));
 	} else {
