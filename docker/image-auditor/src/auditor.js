@@ -79,7 +79,6 @@ function activeMusicians() {
 				activeSince: moment(value['activeSince']).format("YYYY-MM-DDThh:mm:ss.SSS")
 			}
 			musicians.push(data);
-			musicians.push("\\n");
 		}
 
 	});
