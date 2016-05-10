@@ -45,9 +45,13 @@ var dictionnary = new Map();
  * @param sound is the sound played by the musician
  * @param timestamp is the time when he played that sound
  */
-function Musician(sound, timestamp) {
+function Musician(sound, activeSince, lastTimePlayed) {
 	this.instrument = protocol.INSTRUMENT_MAP.get(sound);
-	this.activeSince = timestamp;
+	this.activeSince = activeSince;
+	this.lastTimePlayed = lastTimePlayed;
+}
+Musician.prototype.setLastTimePlayed = function(lastTimePlayed) {
+	this.lastTimePlayed = lastTimePlayed;
 }
 
 /*
@@ -64,7 +68,7 @@ function activeMusicians() {
 	// and add him to our musicians array if it's the case
 	dictionnary.forEach(function (value, key) {
 
-		if (value['activeSince'] < Date.now() - protocol.ACTIVITY_TIME) {
+		if (value['lastTimePlayed'] < Date.now() - protocol.ACTIVITY_TIME) {
 			// Remove the musician from our dictionnary
 			dictionnary.delete(key);
 		} else {
@@ -75,6 +79,7 @@ function activeMusicians() {
 				activeSince: moment(value['activeSince']).format("YYYY-MM-DDThh:mm:ss.SSS")
 			}
 			musicians.push(data);
+			musicians.push("\\n");
 		}
 
 	});
@@ -103,8 +108,14 @@ s.on('message', function(msg, source) {
 	json = JSON.parse(msg);
 
 	// Add musician if he's not contained in our dictionnary
-	dictionnary.set(json['uuid'], new Musician(json['sound'], json['timestamp']));
+	// or modify the last time he played if he's already contained
+	if (!dictionnary.has(json['uuid'])) {
+		dictionnary.set(json['uuid'], new Musician(json['sound'], Date.now(), json['timestamp']));
+	} else {
+		dictionnary.get(json['uuid']).setLastTimePlayed(json['timestamp']);
+	}
 
+	// This is just to display active musicians to show that it works
 	console.log(activeMusicians());
 });
 
