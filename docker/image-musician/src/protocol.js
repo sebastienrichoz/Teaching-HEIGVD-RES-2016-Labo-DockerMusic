@@ -1,14 +1,13 @@
 /*
  * Our application defines standard string for simulating sounds played by the instruments
  */
- var myMap = new Map();
-
-// Define the values
-myMap.set("piano", "ti-ta-ti");
-myMap.set("trumpet", "pouet");
-myMap.set("flute", "trulu");
-myMap.set("violin", "gzi-gzi");
-myMap.set("drum", "boum-boum");
+ var myMap = new Map([
+  	["piano", "ti-ta-ti"],
+  	["trumpet", "pouet"],
+  	["flute", "trulu"],
+  	["violin", "gzi-gzi"],
+  	["drum", "boum-boum"]
+]);
 
 exports.INSTRUMENT_MAP = myMap;
 

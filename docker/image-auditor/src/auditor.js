@@ -1,17 +1,17 @@
 
 /*
 	Source: This program is based on the Thermomether example of wasadigi github user
-			https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
+		https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
 
 	This program simulates a "data collection station", which joins a multicast
 	group in order to receive sounds played by musicians.
 	The sounds are transported in json payloads with the following format:
 
-	 	{
-	   		"uuid" : "aa7d8cb3-a15f-4f06-a0eb-b8feb6244a60",
-	    	"sound" : "ti-ta-ti",
-	    	"timestamp" : "789153154"
-	    }
+	{
+		"uuid" : "aa7d8cb3-a15f-4f06-a0eb-b8feb6244a60",
+		"sound" : "ti-ta-ti",
+		"timestamp" : "789153154"
+	}
 
 	Usage: to start the auditor, use the following command in a terminal
 		node auditor.js
@@ -43,7 +43,8 @@ var dictionnary = new Map();
 /*
  * Let's define a javascript class for our musician.
  * @param sound is the sound played by the musician
- * @param timestamp is the time when he played that sound
+ * @param activeSince is the first time when he began to play
+ * @param lastTimePlayed is the last time when the musician played a sound
  */
 function Musician(sound, activeSince, lastTimePlayed) {
 	this.instrument = protocol.INSTRUMENT_MAP.get(sound);
@@ -88,13 +89,13 @@ function activeMusicians() {
 }
 
 /* 
- * Let's create a datagram socket. We will use it to listen for datagrams published in the
- * multicast group by musicians and containing sounds
+ * Let's create a datagram socket. We will use it to listen
+ * to datagrams published in the multicast group by musicians.
  */
 var s = dgram.createSocket('udp4');
 s.bind(protocol.PROTOCOL_PORT, function() {
-  console.log("Joining multicast group");
-  s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
+	console.log("Joining multicast group");
+	s.addMembership(protocol.PROTOCOL_MULTICAST_ADDRESS);
 });
 
 /* 
@@ -107,7 +108,7 @@ s.on('message', function(msg, source) {
 	json = JSON.parse(msg);
 
 	// Add musician if he's not contained in our dictionnary
-	// or modify the last time he played if he's already contained
+	// or modify the last time he played if he's already in it.
 	if (!dictionnary.has(json['uuid'])) {
 		dictionnary.set(json['uuid'], new Musician(json['sound'], Date.now(), json['timestamp']));
 	} else {
