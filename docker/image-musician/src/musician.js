@@ -1,31 +1,31 @@
 /*
 	Source: This program is based on the Thermomether example of wasadigi github user
-			https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
+		https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
 
 	This program simulates a musician in an orhcestra, who plays a sound each second 
 	depending his instrument and publishes it on a multicast group.
 	Other programs can join the group and receive the sound.
 
 	The sound is transported in json payloads with the following format:
-
-   	{
-   		"uuid" : "aa7d8cb3-a15f-4f06-a0eb-b8feb6244a60",
-    	"sound" : "ti-ta-ti",
-    	"timestamp" : "789153154"
-    }
+	
+	{
+		"uuid" : "aa7d8cb3-a15f-4f06-a0eb-b8feb6244a60",
+		"sound" : "ti-ta-ti",
+		"timestamp" : "789153154"
+	}
 
 	Usage: 	to start a musician, type the following command in a terminal
-        	(of course, you can run several musicians in parallel and observe that all
-        	sounds are transmitted via the multicast group):
-
-   			node musician.js <instrument>
-
-   			where <instrument> can be one of the following :
-   			- piano
-			- trumpet
-			- flute
-			- violin
-			- drum
+	(of course, you can run several musicians in parallel and observe that all
+	sounds are transmitted via the multicast group):
+	
+	node musician.js <instrument>
+	
+	where <instrument> can be one of the following :
+   	- piano
+	- trumpet
+	- flute
+	- violin
+	- drum
 */
 
 /*
@@ -45,7 +45,6 @@ var dgram = require('dgram');
 
 /*
  * Let's create a datagram socket. We will use it to send our UDP datagrams 
- * 'udp4' 
  */
 var server = dgram.createSocket('udp4');
 
@@ -103,8 +102,8 @@ function Musician(instrument) {
  * Let's get the musician instrument from the command line attribute
  */
 if (process.argv.length < 3) {
-	console.log("You should specify an instrument as third argument");
-} else {
+	console.log("Error. You should specify an instrument as third argument.");
+} else { // The following args are ignored
 	var instrument = process.argv[2];
 	
 	/*
