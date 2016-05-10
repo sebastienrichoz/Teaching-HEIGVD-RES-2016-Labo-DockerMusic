@@ -1,17 +1,17 @@
 
 /*
 	Source: This program is based on the Thermomether example of wasadigi github user
-			https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
+		https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
 
 	This program simulates a "data collection station", which joins a multicast
 	group in order to receive sounds played by musicians.
 	The sounds are transported in json payloads with the following format:
 
-	 	{
-	   		"uuid" : "aa7d8cb3-a15f-4f06-a0eb-b8feb6244a60",
-	    	"sound" : "ti-ta-ti",
-	    	"timestamp" : "789153154"
-	    }
+	{
+		"uuid" : "aa7d8cb3-a15f-4f06-a0eb-b8feb6244a60",
+		"sound" : "ti-ta-ti",
+		"timestamp" : "789153154"
+	}
 
 	Usage: to start the auditor, use the following command in a terminal
 		node auditor.js
