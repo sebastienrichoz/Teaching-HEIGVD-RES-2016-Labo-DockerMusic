@@ -1,4 +1,3 @@
-
 /*
 	Source: This program is based on the Thermomether example of wasadigi github user
 		https://github.com/SoftEng-HEIGVD/Teaching-Docker-UDP-sensors
@@ -15,6 +14,9 @@
 
 	Usage: to start the auditor, use the following command in a terminal
 		node auditor.js
+
+	@author : 	Sébastien Richoz
+				Patrick Djomo
 */
 
 /*
@@ -127,5 +129,6 @@ var net = require('net');
 var server = net.createServer((socket) => {
 	socket.write(activeMusicians());
 	socket.pipe(socket);
+	socket.end();
 });
 server.listen(protocol.PROTOCOL_PORT);

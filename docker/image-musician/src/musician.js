@@ -26,6 +26,9 @@
 	- flute
 	- violin
 	- drum
+
+	@author : 	Sébastien Richoz
+				Patrick Djomo
 */
 
 /*

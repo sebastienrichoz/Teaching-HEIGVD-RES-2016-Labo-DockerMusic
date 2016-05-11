@@ -1,4 +1,11 @@
 /*
+	This file defines global constants
+	
+ 	@author: 	Sébastien Richoz
+ 				Patrick Djomo
+ */
+
+ /*
  * Our application defines standard string for retrieving instruments from sounds
  */
 var myMap = new Map([
